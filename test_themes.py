@@ -1,4 +1,4 @@
 from themes import duties
-def testIt():
-    assert len(duties)>10
+def test_duties_length():
+    assert len(duties) == 13 # Validate all duties are present
     
