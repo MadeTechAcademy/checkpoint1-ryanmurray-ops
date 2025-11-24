@@ -37,3 +37,14 @@ def test_full_html_boilerplate(tmp_path):
     assert "<body>" in content
     assert "</body>" in content
     assert "</html>" in content
+
+def test_html_uses_unordered_list(tmp_path):
+    html_file = tmp_path / "duties.html"
+    save_duties_to_html(duties, html_file)
+    content = html_file.read_text()
+
+    # Expect <ul> and at least one <li> to be present
+    assert "<ul>" in content
+    assert "</ul>" in content
+    assert "<li>" in content
+    assert "</li>" in content
