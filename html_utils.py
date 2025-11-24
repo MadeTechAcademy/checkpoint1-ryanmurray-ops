@@ -1,4 +1,5 @@
 from pathlib import Path
 
 def save_duties_to_html(duties, file_path):
-    Path(file_path).write_text(duties[0]) 
+    content = "\n".join(duties)
+    Path(file_path).write_text(content) 
