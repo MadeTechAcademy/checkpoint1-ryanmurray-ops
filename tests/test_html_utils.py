@@ -16,4 +16,4 @@ def test_file_contains_first_duty(tmp_path):
     html_file = tmp_path / "duties.html"
     save_duties_to_html(duties, html_file)
     content = html_file.read_text()
-    asert duties[0] in content
+    assert duties[0] in content
