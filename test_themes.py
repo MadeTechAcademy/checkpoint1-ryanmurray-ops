@@ -13,4 +13,8 @@ def test_list_duties_output():
     assert isinstance(output, str)
     for duty in duties:
         assert duty in output
+
+def test_list_duties_line_breaks():
+    output = list_duties()
+    assert output.count("\n") == len(duties) -1
     
