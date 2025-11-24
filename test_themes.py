@@ -16,5 +16,9 @@ def test_list_duties_output():
 
 def test_list_duties_line_breaks():
     output = list_duties()
-    assert output.count("\n") == len(duties) -1
+    assert output.count("\n") == len(duties) - 1
+
+def test_no_empty_duties():
+    for duty in duties:
+        assert duty.strip() != ""
     
