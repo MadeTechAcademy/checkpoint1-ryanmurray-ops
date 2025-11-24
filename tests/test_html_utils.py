@@ -24,3 +24,16 @@ def test_file_contains_all_duties(tmp_path):
     content = html_file.read_text()
     for duty in duties:
         assert duty in content
+
+def test_full_html_boilerplate(tmp_path):
+    html_file = tmp_path / "duties.html"
+    save_duties_to_html(duties, html_file)
+    content = html_file.read_text()
+    assert "<!DOCTYPE html>" in content
+    assert "<html" in content
+    assert "<head>" in content
+    assert "<meta charset=" in content
+    assert "<title>" in content
+    assert "<body>" in content
+    assert "</body>" in content
+    assert "</html>" in content
