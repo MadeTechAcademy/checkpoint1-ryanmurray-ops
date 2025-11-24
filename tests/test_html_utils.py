@@ -48,3 +48,9 @@ def test_html_uses_unordered_list(tmp_path):
     assert "</ul>" in content
     assert "<li>" in content
     assert "</li>" in content
+
+def test_html_links_external_css(tmp_path):
+    html_file = tmp_path / "duties.html"
+    save_duties_to_html(duties, html_file)
+    content = html_file.read_text()
+    assert 'href="duties.css"' in content
