@@ -20,3 +20,8 @@ def test_generate_html_file_contains_all_duties(tmp_path):
     content = output_file.read_text()
     for duty in duties:
         assert duty in content
+
+def test_generate_html_returns_correct_file_path(tmp_path):
+    output_file = tmp_path / "duties.html"
+    result = generate_html(duties, output_file)
+    assert result == output_file
