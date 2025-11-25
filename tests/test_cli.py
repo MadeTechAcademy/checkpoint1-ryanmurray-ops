@@ -15,3 +15,9 @@ def test_main_option_2_generates_html():
     main("2")
     output_file = "duties.html"
     assert Path(output_file).exists()
+
+def test_prompt_text_includes_theme_option():
+    prompt = get_prompt()
+    assert "Press (3) to view duties by theme" in prompt
+
+
