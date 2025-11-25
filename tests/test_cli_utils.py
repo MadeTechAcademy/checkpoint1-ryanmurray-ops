@@ -1,6 +1,6 @@
 from pathlib import Path
 from themes import duties
-from cli_utils import generate_html
+from utilities.cli_utils import generate_html
 
 def test_generate_html_create_file(tmp_path):
     output_file = tmp_path / "duties.html"

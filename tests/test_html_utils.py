@@ -1,6 +1,6 @@
 from pathlib import Path
 from themes import duties
-from html_utils import save_duties_to_html
+from utilities.html_utils import save_duties_to_html
 
 
 def test_function_exists(tmp_path):
