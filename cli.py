@@ -24,6 +24,9 @@ def main(choice=None):
         output_file = "duties.html"
         generate_html(duties, output_file)
         print(f"Duties saved to {output_file}")
+    
+    elif str(choice) == "3":
+        return ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
 
 if __name__=="__main__":
     main()
