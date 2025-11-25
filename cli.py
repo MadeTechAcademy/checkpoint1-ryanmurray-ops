@@ -26,21 +26,19 @@ def main(choice=None, theme_number=None):
         print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
+        print("Available Themes:\n")
+        for number, (theme_name, duty_numbers) in themes.items():
+            print(f"{number}. {theme_name}")
+
         if theme_number is None:
-            print("Available Themes:\n")
-            for number, (theme_name, duty_numbers) in themes.items():
-                print(f"{number}. {theme_name}")
+            theme_number = int(input("Enter theme number: "))
 
-        else:
-            theme_name, duty_numbers = themes[theme_number]
-            theme_duties = [duties[i - 1] for i in duty_numbers]
+        theme_name, duty_numbers = themes[theme_number]
+        theme_duties = [duties[i - 1] for i in duty_numbers]
+        output_file = f"{theme_name.lower().replace(' ', '_')}.html"
+        generate_html(theme_duties, output_file)
 
-            output_file = f"{theme_name.lower().replace(' ', '_')}.html"
-            generate_html(theme_duties, output_file)
-
-            print(f"Theme '{theme_name}' saved to {output_file}")
-        # themes = ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
-        # print("\n".join(themes))
+        print(f"Theme '{theme_name}' saved to {output_file}")
 
 if __name__=="__main__":
     main()

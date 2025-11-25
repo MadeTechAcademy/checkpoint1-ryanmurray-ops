@@ -21,7 +21,7 @@ def test_prompt_text_includes_theme_option():
     assert "Press (3) to view duties by theme" in prompt
 
 def test_main_option_3_prints_themes(capsys):
-    main("3")
+    main("3", theme_number=1)
     captured = capsys.readouterr()
     assert "Bootcamp" in captured.out
     assert "Automate!" in captured.out 
