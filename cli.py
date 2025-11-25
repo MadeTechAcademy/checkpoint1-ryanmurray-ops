@@ -8,6 +8,7 @@ Welcome to apprentice themes!
 
 Press (1) to list all the duties
 Press (2) to generate an HTML file of duties
+Press (3) to view duties by theme
 Enter your choice:
 """
 
