@@ -26,6 +26,12 @@ def test_main_option_3_prints_themes(capsys):
     assert "Bootcamp" in captured.out
     assert "Automate!" in captured.out 
 
+def test_main_option_3_generates_html():
+    main("3", theme_number=1)
+    output_file = "bootcamp.html"
+    assert Path(output_file).exists()
+
+
 
 
 
