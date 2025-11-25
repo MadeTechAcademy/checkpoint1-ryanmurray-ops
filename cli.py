@@ -26,7 +26,8 @@ def main(choice=None):
         print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
-        return ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
+        themes = ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
+        print("\n".join(themes))
 
 if __name__=="__main__":
     main()

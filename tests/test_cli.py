@@ -20,10 +20,6 @@ def test_prompt_text_includes_theme_option():
     prompt = get_prompt()
     assert "Press (3) to view duties by theme" in prompt
 
-def test_main_option_3_displays_theme_menu():
-    menu = main("3")
-    assert "Bootcamp" in menu
-
 def test_main_option_3_prints_themes(capsys):
     main("3")
     captured = capsys.readouterr()
