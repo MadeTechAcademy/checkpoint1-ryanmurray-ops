@@ -1,4 +1,5 @@
 from cli import get_prompt
+from cli import main
 
 def test_prompt_text():
     prompt = get_prompt()

@@ -11,15 +11,11 @@ Enter your choice:
 """
 
 
-def main():
-    x = input("""
-    Welcome to apprentice themes!\n
-
-    Press (1) to list all the duties\n
-    Enter your choice:
-    """)
+def main(choice=None):
+    if choice is None:
+        choice = input(get_prompt())
     
-    if x == '1':
+    if str(choice) == '1':
         print(list_duties())
 
 if __name__=="__main__":
