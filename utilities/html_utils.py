@@ -13,13 +13,23 @@ def save_duties_to_html(duties, file_path):
             <link rel="stylesheet" href="css/styles.css">
         </head>
         <body>
-        <ul>
+            <header>
+                <h1>Apprenticeship Duties</h1>
+                <p>All duties in the apprenticeship listed below</p>
+            </header>
+            <main>
+                <ul>
     """)
 
     
     for duty in duties:
         html_content += f"<li>{duty}</li>\n"
     
-    html_content += "</ul>\n</body>\n</html>"
+    html_content += textwrap.dedent("""\
+                </ul>
+            </main>
+        </body>
+        </html>
+    """)
 
     Path(file_path).write_text(html_content) 
