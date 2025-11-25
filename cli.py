@@ -1,4 +1,4 @@
-from themes import list_duties, duties
+from themes import list_duties, duties, themes
 from utilities.cli_utils import generate_html
 
 def get_prompt():
@@ -13,7 +13,7 @@ Enter your choice:
 """
 
 
-def main(choice=None):
+def main(choice=None, theme_number=None):
     if choice is None:
         choice = input(get_prompt())
     
@@ -26,8 +26,21 @@ def main(choice=None):
         print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
-        themes = ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
-        print("\n".join(themes))
+        if theme_number is None:
+            print("Available Themes:\n")
+            for number, (theme_name, duty_numbers) in themes.items():
+                print(f"{number}. {theme_name}")
+
+        else:
+            theme_name, duty_numbers = themes[theme_number]
+            theme_duties = [duties[i - 1] for i in duty_numbers]
+
+            output_file = f"{theme_name.lower().replace(' ', '_')}.html"
+            generate_html(theme_duties, output_file)
+
+            print(f"Theme '{theme_name}' saved to {output_file}")
+        # themes = ["Bootcamp", "Automate!", "Houston, Prepare to Launch", "Going Deeper", "Assemble", "Call Security"]
+        # print("\n".join(themes))
 
 if __name__=="__main__":
     main()

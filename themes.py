@@ -17,3 +17,12 @@ duties = [
 def list_duties():
     # Return all duties as a single string, each on a new line.
     return "\n".join(duties)
+
+themes = {
+    1: ("Bootcamp", [1,2,3,4,13]),
+    2: ("Automate!", [5,7,10]),
+    3: ("Houston, Prepare to Launch", [6,7,10,12]),
+    4: ("Going Deeper", [11]),
+    5: ("Assemble", [8]),
+    6: ("Call Security", [9])
+}
