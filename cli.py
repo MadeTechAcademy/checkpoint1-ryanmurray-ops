@@ -1,4 +1,5 @@
-from themes import list_duties
+from themes import list_duties, duties
+from utilities.cli_utils import generate_html
 
 def get_prompt():
      return """
@@ -15,8 +16,13 @@ def main(choice=None):
     if choice is None:
         choice = input(get_prompt())
     
-    if str(choice) == '1':
+    if str(choice) == "1":
         print(list_duties())
+    
+    elif str(choice) == "2":
+        output_file = "duties.html"
+        generate_html(duties, output_file)
+        print(f"Duties saved to {output_file}")
 
 if __name__=="__main__":
     main()

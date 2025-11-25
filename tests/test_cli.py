@@ -1,3 +1,4 @@
+from pathlib import Path
 from cli import get_prompt
 from cli import main
 
@@ -10,7 +11,7 @@ def test_prompt_text():
 def test_main_accepts_choice_parameter():
     main(1)
 
-def test_main_option_2_generates_html(tmp_path):
-    output_file = tmp_path / "duties.html"
-    main(("2", output_file))
-    assert output_file.exists()
+def test_main_option_2_generates_html():
+    main("2")
+    output_file = "duties.html"
+    assert Path(output_file).exists()
