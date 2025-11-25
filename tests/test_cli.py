@@ -24,4 +24,13 @@ def test_main_option_3_displays_theme_menu():
     menu = main("3")
     assert "Bootcamp" in menu
 
+def test_main_option_3_prints_themes(capsys):
+    main("3")
+    captured = capsys.readouterr()
+    assert "Bootcamp" in captured.out
+    assert "Automate!" in captured.out 
+
+
+
+
 
