@@ -1,4 +1,4 @@
-from themes import duties, list_duties
+from themes import duties, list_duties, Theme
 
 def test_duties_length():
     assert len(duties) == 13 # Validate all duties are present

@@ -18,11 +18,17 @@ def list_duties():
     # Return all duties as a single string, each on a new line.
     return "\n".join(duties)
 
+class Theme:
+    def __init__(self, name, duty_numbers, all_duties):
+        self.name = name
+        self.duty_numbers = duty_numbers
+        self.duties = [all_duties[i-1] for i in duty_numbers]
+
 themes = {
-    1: ("Bootcamp", [1,2,3,4,13]),
-    2: ("Automate!", [5,7,10]),
-    3: ("Houston, Prepare to Launch", [6,7,10,12]),
-    4: ("Going Deeper", [11]),
-    5: ("Assemble", [8]),
-    6: ("Call Security", [9])
+    1: Theme("Bootcamp", [1, 2, 3, 4, 13], duties),
+    2: Theme("Automate!", [5, 7, 10], duties),
+    3: Theme("Houston, Prepare to Launch", [6, 7, 10, 12], duties),
+    4: Theme("Going Deeper", [11], duties),
+    5: Theme("Assemble", [8], duties),
+    6: Theme("Call Security", [9], duties)
 }
