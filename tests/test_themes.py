@@ -21,3 +21,13 @@ def test_list_duties_line_breaks():
 def test_no_empty_duties():
     for duty in duties:
         assert duty.strip() != ""
+
+
+# --------------------------
+# Tests for the Theme class
+# --------------------------
+
+def test_theme_has_correct_name_and_numbers():
+    bootcamp = Theme("Bootcamp", [1, 2, 3, 4, 13], duties)
+    assert bootcamp.name == "Bootcamp"
+    assert bootcamp.duty_numbers == [1, 2, 3, 4, 13]
