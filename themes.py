@@ -21,7 +21,11 @@ class Theme:
         self.duties = self.get_duties()
 
     def get_duties(self):
-        return [Theme.all_duties[i - 1] for i in self.duty_numbers]
+        return [Theme.all_duties[duty_index - 1] for duty_index in self.duty_numbers]
+    
+    def list_duties():
+        # Return all duties as a single string, each on a new line.
+        return "\n".join(Theme.all_duties)
 
 duties = Theme.all_duties
 themes = {
@@ -33,6 +37,3 @@ themes = {
     6: Theme("Call Security", [9])
 }
 
-def list_duties():
-    # Return all duties as a single string, each on a new line.
-    return "\n".join(Theme.all_duties)c

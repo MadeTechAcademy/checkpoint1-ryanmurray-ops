@@ -1,4 +1,4 @@
-from themes import list_duties, duties, themes
+from themes import Theme, duties, themes
 from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
 
 def main(choice=None, theme_number=None):
@@ -6,7 +6,7 @@ def main(choice=None, theme_number=None):
         choice = input(get_prompt())
     
     if str(choice) == "1":
-        print(list_duties())
+        print(Theme.list_duties())
     
     elif str(choice) == "2":
         output_file = "duties.html"

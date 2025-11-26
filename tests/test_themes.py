@@ -1,4 +1,4 @@
-from themes import duties, list_duties, Theme
+from themes import duties, Theme
 
 def test_duties_length():
     assert len(duties) == 13 # Validate all duties are present
@@ -9,13 +9,13 @@ def test_duties_numbering():
 
 def test_list_duties_output():
     # list_duties() should return a string containing all duties
-    output = list_duties()
+    output = Theme.list_duties()
     assert isinstance(output, str)
     for duty in duties:
         assert duty in output
 
 def test_list_duties_line_breaks():
-    output = list_duties()
+    output = Theme.list_duties()
     assert output.count("\n") == len(duties) - 1
 
 def test_no_empty_duties():
