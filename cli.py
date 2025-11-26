@@ -11,7 +11,10 @@ Press (2) to generate an HTML file of duties
 Press (3) to view duties by theme
 Enter your choice:
 """
-
+def print_available_themes():
+    print("Available Themes:\n")
+    for number, (theme_name, duty_numbers) in themes.items():
+        print(f"{number}. {theme_name}")
 
 def main(choice=None, theme_number=None):
     if choice is None:
@@ -26,9 +29,7 @@ def main(choice=None, theme_number=None):
         print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
-        print("Available Themes:\n")
-        for number, (theme_name, duty_numbers) in themes.items():
-            print(f"{number}. {theme_name}")
+        print_available_themes()
 
         if theme_number is None:
             theme_number = int(input("Enter theme number: "))
