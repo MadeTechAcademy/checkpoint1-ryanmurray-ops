@@ -22,7 +22,11 @@ class Theme:
     def __init__(self, name, duty_numbers, all_duties):
         self.name = name
         self.duty_numbers = duty_numbers
-        self.duties = [all_duties[i-1] for i in duty_numbers]
+        self.all_duties = all_duties
+        self.duties = self.get_duties()
+
+    def get_duties(self):
+        return [self.all_duties[i - 1] for i in self.duty_numbers]
 
 themes = {
     1: Theme("Bootcamp", [1, 2, 3, 4, 13], duties),
