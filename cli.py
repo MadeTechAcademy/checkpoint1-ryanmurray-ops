@@ -1,16 +1,6 @@
 from themes import list_duties, duties, themes
-from utilities.cli_utils import generate_html, generate_theme_file
+from utilities.cli_utils import generate_html, generate_theme_file, get_prompt
 
-def get_prompt():
-     return """
-Welcome to apprentice themes!
-
-
-Press (1) to list all the duties
-Press (2) to generate an HTML file of duties
-Press (3) to view duties by theme
-Enter your choice:
-"""
 def print_available_themes():
     print("Available Themes:\n")
     for number, (theme_name, duty_numbers) in themes.items():
