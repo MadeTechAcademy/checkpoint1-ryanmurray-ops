@@ -12,6 +12,11 @@ Press (3) to view duties by theme
 Enter your choice:
 """
 
+def print_available_themes():
+    print("Available Themes:\n")
+    for number, (theme_name, duty_numbers) in themes.items():
+        print(f"{number}. {theme_name}")
+
 def generate_html(duties, output_file):
     # Generate a HTML file with the given duties
     save_duties_to_html(duties, output_file)

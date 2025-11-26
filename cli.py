@@ -1,10 +1,5 @@
 from themes import list_duties, duties, themes
-from utilities.cli_utils import generate_html, generate_theme_file, get_prompt
-
-def print_available_themes():
-    print("Available Themes:\n")
-    for number, (theme_name, duty_numbers) in themes.items():
-        print(f"{number}. {theme_name}")
+from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
 
 def main(choice=None, theme_number=None):
     if choice is None:
