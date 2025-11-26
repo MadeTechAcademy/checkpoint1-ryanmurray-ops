@@ -1,5 +1,5 @@
 from themes import list_duties, duties, themes
-from utilities.cli_utils import generate_html
+from utilities.cli_utils import generate_html, generate_theme_file
 
 def get_prompt():
      return """
@@ -34,11 +34,7 @@ def main(choice=None, theme_number=None):
         if theme_number is None:
             theme_number = int(input("Enter theme number: "))
 
-        theme_name, duty_numbers = themes[theme_number]
-        theme_duties = [duties[i - 1] for i in duty_numbers]
-        output_file = f"{theme_name.lower().replace(' ', '_')}.html"
-        generate_html(theme_duties, output_file)
-
+        output_file, theme_name = generate_theme_file(theme_number)
         print(f"Theme '{theme_name}' saved to {output_file}")
 
 if __name__=="__main__":
