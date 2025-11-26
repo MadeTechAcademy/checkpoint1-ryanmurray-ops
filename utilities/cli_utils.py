@@ -1,4 +1,4 @@
-from themes import themes, duties
+from themes import Theme
 from utilities.html_utils import save_duties_to_html
 
 def get_prompt():
@@ -14,7 +14,7 @@ Enter your choice:
 
 def print_available_themes():
     print("Available Themes:\n")
-    for number,theme in themes.items():
+    for number,theme in Theme.all_themes.items():
         print(f"{number}. {theme.name}")
 
 def generate_html(duties, output_file):
@@ -23,7 +23,7 @@ def generate_html(duties, output_file):
     return output_file
 
 def generate_theme_file(theme_number):
-    theme = themes[theme_number]
+    theme = Theme.all_themes[theme_number]
     output_file = f"{theme.name.lower().replace(' ', '_')}.html"
     generate_html(theme.duties, output_file)
     return output_file, theme.name 

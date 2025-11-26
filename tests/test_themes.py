@@ -1,25 +1,25 @@
-from themes import duties, Theme
+from themes import Theme
 
 def test_duties_length():
-    assert len(duties) == 13 # Validate all duties are present
+    assert len(Theme.all_duties) == 13 # Validate all duties are present
 
 def test_duties_numbering():
-    for duty_number, duty_text in enumerate(duties, start=1):
+    for duty_number, duty_text in enumerate(Theme.all_duties, start=1):
         assert f"Duty {duty_number}" in duty_text
 
 def test_list_duties_output():
     # list_duties() should return a string containing all duties
     output = Theme.list_duties()
     assert isinstance(output, str)
-    for duty in duties:
+    for duty in Theme.all_duties:
         assert duty in output
 
 def test_list_duties_line_breaks():
     output = Theme.list_duties()
-    assert output.count("\n") == len(duties) - 1
+    assert output.count("\n") == len(Theme.all_duties) - 1
 
 def test_no_empty_duties():
-    for duty in duties:
+    for duty in Theme.all_duties:
         assert duty.strip() != ""
 
 

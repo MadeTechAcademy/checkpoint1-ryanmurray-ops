@@ -1,4 +1,4 @@
-from themes import Theme, duties, themes
+from themes import Theme
 from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
 
 def main(choice=None, theme_number=None):
@@ -10,7 +10,7 @@ def main(choice=None, theme_number=None):
     
     elif str(choice) == "2":
         output_file = "duties.html"
-        generate_html(duties, output_file)
+        generate_html(Theme.all_duties, output_file)
         print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":

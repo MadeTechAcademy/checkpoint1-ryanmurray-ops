@@ -15,6 +15,9 @@ class Theme:
         "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
     ]
 
+    # Class level dictioary to store theme instances
+    all_themes = {}
+
     def __init__(self, name, duty_numbers):
         self.name = name
         self.duty_numbers = duty_numbers
@@ -27,8 +30,7 @@ class Theme:
         # Return all duties as a single string, each on a new line.
         return "\n".join(Theme.all_duties)
 
-duties = Theme.all_duties
-themes = {
+Theme.all_themes = {
     1: Theme("Bootcamp", [1, 2, 3, 4, 13]),
     2: Theme("Automate!", [5, 7, 10]),
     3: Theme("Houston, Prepare to Launch", [6, 7, 10, 12]),
