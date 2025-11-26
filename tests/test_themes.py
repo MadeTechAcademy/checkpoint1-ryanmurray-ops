@@ -31,3 +31,8 @@ def test_theme_has_correct_name_and_numbers():
     bootcamp = Theme("Bootcamp", [1, 2, 3, 4, 13], duties)
     assert bootcamp.name == "Bootcamp"
     assert bootcamp.duty_numbers == [1, 2, 3, 4, 13]
+
+def test_theme_returns_correct_duty_texts():
+    bootcamp = Theme("Bootcamp", [1, 2, 3, 4, 13], duties)
+    assert len(bootcamp.duties) == 5
+    assert "Script and code in at least one general purpose language" in bootcamp.duties[0]
