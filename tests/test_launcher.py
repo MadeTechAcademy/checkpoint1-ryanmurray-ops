@@ -14,3 +14,9 @@ def test_launch_selected_terminal_uses_standard_renderer(capsys):
     launch_selected_terminal(choice="1", renderer_choice="2")
     captured = capsys.readouterr().out
     assert "Script and code in at least one general purpose language" in captured
+
+def test_launch_selected_terminal_uses_rich_renderer(capsys):
+    launch_selected_terminal(choice="1", renderer_choice="1")
+    captured = capsys.readouterr().out
+    assert "Script and code in at least one general purpose language" in captured
+    assert "Initiate and facilitate knowledge sharing" in captured
