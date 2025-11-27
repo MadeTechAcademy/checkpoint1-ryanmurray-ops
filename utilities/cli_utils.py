@@ -3,17 +3,28 @@ from utilities.html_utils import save_duties_to_html
 from rich_cli import RichRenderer
 from rich.table import Table
 from rich.console import Console
+from rich.text import Text
 
-def get_prompt():
-     return """
-Welcome to apprentice themes!
+def get_prompt(renderer=None):
+     if isinstance(renderer, RichRenderer):
+        table = Table(title="[bold magenta]Welcome to Apprentice Themes[/bold magenta]")
+        table.add_column("Option", style="bold cyan", justify="center")
+        table.add_column("Action", style="cyan")
+        table.add_row("1", "List all the duties")
+        table.add_row("2", "Generate an HTML file of duties")
+        table.add_row("3", "View duties by theme")
 
-
-Press (1) to list all the duties
-Press (2) to generate an HTML file of duties
-Press (3) to view duties by theme
-Enter your choice:
-"""
+        renderer.print(table)
+        renderer.print(Text("Please choose an option: ", style="bold green"))
+        return ""
+     else:
+        return (
+            "Welcome to apprentice themes!\n\n"
+            "Press (1) to list all the duties\n"
+            "Press (2) to generate an HTML file of duties\n"
+            "Press (3) to view duties by theme\n"
+            "Enter your choice: "
+        )
 
 def print_available_themes(renderer):
     renderer.print("Available Themes:\n")

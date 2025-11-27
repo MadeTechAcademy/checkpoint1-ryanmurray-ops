@@ -7,7 +7,7 @@ def main(choice=None, theme_number=None, renderer=None):
         renderer = StandardRenderer()
 
     if choice is None:
-        choice = input(get_prompt())
+        choice = input(get_prompt(renderer))
     
     if str(choice) == "1":
         render_all_duties(renderer)
