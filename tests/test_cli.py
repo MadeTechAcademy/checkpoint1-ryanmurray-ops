@@ -1,6 +1,5 @@
 from pathlib import Path
-from cli import get_prompt
-from cli import main
+from cli import get_prompt, main, StandardRenderer
 
 def test_prompt_text():
     prompt = get_prompt()
@@ -40,7 +39,7 @@ def test_main_option_1_prints_duties_via_renderer(capsys):
 
 def test_main_option_2_uses_renderer(capsys):
     renderer = StandardRenderer()
-    main(choice="2" renderer=renderer)
+    main(choice="2", renderer=renderer)
     captured = capsys.readouterr()
     assert "Duties saved to duties.html" in captured.out
 

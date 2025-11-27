@@ -18,7 +18,7 @@ def main(choice=None, theme_number=None, renderer=None):
     elif str(choice) == "2":
         output_file = "duties.html"
         generate_html(Theme.all_duties, output_file)
-        print(f"Duties saved to {output_file}")
+        renderer.print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
         print_available_themes()
