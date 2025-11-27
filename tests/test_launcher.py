@@ -23,12 +23,13 @@ def test_launch_selected_terminal_uses_rich_renderer(capsys):
     assert "Initiate and facilitate knowledge sharing" in captured
 
 def test_launch_selected_terminal_invalid_choice(capsys):
-    launch_selected_terminal(choice="99", renderer_choice="2")
+    launch_selected_terminal(choice="1", renderer_choice="99")
     captured = capsys.readouterr().out
     assert "Invalid choice, please select 1 or 2" in captured
 
 def test_launch_selected_terminal_with_user_input_rich(capsys):
-    with patch("builtins.input", side_effect=["1", "1"]):
+    with patch("builtins.input", return_value="1"):
         launch_selected_terminal(choice=None, renderer_choice=None)
+    captured = capsys.readouterr().out
     assert "Script and code in at least one general purpose language" in captured
     
