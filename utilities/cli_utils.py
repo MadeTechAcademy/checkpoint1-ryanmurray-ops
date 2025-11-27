@@ -12,8 +12,8 @@ Press (3) to view duties by theme
 Enter your choice:
 """
 
-def print_available_themes():
-    print("Available Themes:\n")
+def print_available_themes(renderer):
+    renderer.print("Available Themes:\n")
     for number,theme in Theme.all_themes.items():
         print(f"{number}. {theme.name}")
 

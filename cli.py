@@ -21,13 +21,17 @@ def main(choice=None, theme_number=None, renderer=None):
         renderer.print(f"Duties saved to {output_file}")
     
     elif str(choice) == "3":
-        print_available_themes()
+        print_available_themes(renderer)
 
         if theme_number is None:
             theme_number = int(input("Enter theme number: "))
 
         output_file, theme_name = generate_theme_file(theme_number)
-        print(f"Theme '{theme_name}' saved to {output_file}")
+        
+        renderer.print(f"Theme '{theme_name}' saved to {output_file}")
+        renderer.print(f"Duties in '{theme_name}':")
+        for duty in Theme.all_themes[theme_number].duties:
+            renderer.print(f"- {duty}")
 
 if __name__=="__main__":
     main()
