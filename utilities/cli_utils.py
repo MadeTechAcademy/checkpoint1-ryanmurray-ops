@@ -56,3 +56,27 @@ def render_all_duties(renderer):
 def render_duties_html(renderer, output_file="duties.html"):
     generate_html(Theme.all_duties, output_file)
     renderer.print(f"Duties saved to {output_file}")
+
+def render_specific_theme_duties(renderer, theme_number):
+    theme = Theme.all_themes[theme_number]
+    output_file, theme_name = generate_theme_file(theme_number)
+
+    if isinstance(renderer, RichRenderer):
+        console = Console()
+        renderer.print(f"Theme '{theme_name}' saved to {output_file}, style=bold green")
+
+        # Create a table with a title and lines between rows
+        table = Table(title="Duties in '{theme_name}'", show_lines=True)
+        table.add_column("Duty #", style="bold cyan", no_wrap=True)
+        table.add_column("Description", style="cyan")
+
+        for duty_number, duty_description in enumerate(theme.duties, start=1):
+            table.add_row(f"{duty_number}", duty_description)
+
+        console.print(table)
+    else:
+        renderer.print(f"Theme '{theme_name}' saved to {output_file}")
+        renderer.print(f"Duties in '{theme_name}':")
+        for duty_description in theme.duties:
+            renderer.print(f"- {duty_description}")
+
