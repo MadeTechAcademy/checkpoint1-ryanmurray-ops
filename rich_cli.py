@@ -2,7 +2,7 @@ from rich.console import Console
 
 console = Console()
 
-class RichRenderer():
+class RichRenderer:
     def print(self, text, style=None):
         if style:
             console.print(text, style=style)

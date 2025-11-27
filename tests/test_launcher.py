@@ -1,6 +1,6 @@
 from launcher import select_renderer
 from rich_cli import RichRenderer
-from stand_cli import StandardRenderer
+from cli import StandardRenderer
 
 def test_select_renderer_returns_rich_renderer():
     renderer = select_renderer(choice="1")
