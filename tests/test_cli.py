@@ -43,6 +43,14 @@ def test_main_option_2_uses_renderer(capsys):
     captured = capsys.readouterr()
     assert "Duties saved to duties.html" in captured.out
 
+def test_main_option_3_uses_renderer(capsys):
+    renderer = StandardRenderer()
+    main(choice="3", theme_number=1 renderer=renderer)
+    captured = capsys.readouterr()
+    assert "Theme 'Bootcamp' saved to" in captured.out
+    assert "Duties in 'Bootcamp':" in captured.out
+    assert "- Script and code in at least one general purpose language" in captured.out
+
 
 
 
