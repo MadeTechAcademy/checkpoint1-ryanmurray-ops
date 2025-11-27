@@ -2,15 +2,18 @@ from themes import Theme
 from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
 
 class StandardRenderer:
-    def print(slef, text, style=None):
+    def print(self, text, style=None):
         print(text)
 
-def main(choice=None, theme_number=None):
+def main(choice=None, theme_number=None, renderer=None):
+    if renderer is None:
+        renderer = StandardRenderer()
+
     if choice is None:
         choice = input(get_prompt())
     
     if str(choice) == "1":
-        print(Theme.list_duties())
+        renderer.print(Theme.list_duties())
     
     elif str(choice) == "2":
         output_file = "duties.html"
