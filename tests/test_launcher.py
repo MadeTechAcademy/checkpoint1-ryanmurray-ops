@@ -24,4 +24,4 @@ def test_launch_selected_terminal_uses_rich_renderer(capsys):
 def test_launch_selected_terminal_invalid_choice(capsys):
     launch_selected_terminal(choice="99", renderer_choice="2")
     captured = capsys.readouterr().out
-    assert "Invalid choice, please select 1, 2, or 3" in captured
+    assert "Invalid choice, please select 1 or 2" in captured
