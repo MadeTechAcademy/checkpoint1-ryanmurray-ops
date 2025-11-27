@@ -1,4 +1,4 @@
-from launcher import select_renderer
+from launcher import select_renderer, launch_selected_terminal
 from rich_cli import RichRenderer
 from cli import StandardRenderer
 
