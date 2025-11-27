@@ -1,6 +1,6 @@
 from launcher import select_renderer, launch_selected_terminal
 from rich_cli import RichRenderer
-from cli import StandardRenderer
+from standard_cli import StandardRenderer
 from unittest.mock import patch
 
 def test_select_renderer_returns_rich_renderer():

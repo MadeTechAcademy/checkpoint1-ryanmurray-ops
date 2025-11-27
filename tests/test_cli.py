@@ -1,5 +1,6 @@
 from pathlib import Path
-from cli import get_prompt, main, StandardRenderer
+from cli import get_prompt, main
+from standard_cli import StandardRenderer
 
 def test_prompt_text():
     prompt = get_prompt()

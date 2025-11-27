@@ -1,9 +1,6 @@
 from themes import Theme
 from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
-
-class StandardRenderer:
-    def print(self, text, style=None):
-        print(text)
+from standard_cli import StandardRenderer
 
 def main(choice=None, theme_number=None, renderer=None):
     if renderer is None:

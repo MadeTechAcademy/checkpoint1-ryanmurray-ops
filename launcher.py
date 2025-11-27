@@ -1,5 +1,6 @@
 from rich_cli import RichRenderer
-from cli import StandardRenderer, main
+from cli import main
+from standard_cli import StandardRenderer
 
 def select_renderer(choice=None):
     if choice == "1":

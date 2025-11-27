@@ -1,5 +1,6 @@
-from cli import main, StandardRenderer
+from cli import main
 from rich_cli import RichRenderer
+from standard_cli import StandardRenderer
 
 def test_standard_renderer_print():
     renderer = StandardRenderer()
