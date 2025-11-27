@@ -52,3 +52,7 @@ def render_all_duties(renderer):
     else:
         # Plain text for StandardRenderer
         renderer.print(Theme.list_duties())
+
+def render_duties_html(renderer, output_file="duties.html"):
+    generate_html(Theme.all_duties, output_file)
+    renderer.print(f"Duties saved to {output_file}")
