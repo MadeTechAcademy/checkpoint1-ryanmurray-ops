@@ -1,6 +1,7 @@
 from launcher import select_renderer, launch_selected_terminal
 from rich_cli import RichRenderer
 from cli import StandardRenderer
+from unittest.mock import patch
 
 def test_select_renderer_returns_rich_renderer():
     renderer = select_renderer(choice="1")
@@ -25,3 +26,9 @@ def test_launch_selected_terminal_invalid_choice(capsys):
     launch_selected_terminal(choice="99", renderer_choice="2")
     captured = capsys.readouterr().out
     assert "Invalid choice, please select 1 or 2" in captured
+
+def test_launch_selected_terminal_with_user_input_rich(capsys):
+    with patch("builtins.input", side_effect=["1", "1"]):
+        launch_selected_terminal(choice=None, renderer_choice=None)
+    assert "Script and code in at least one general purpose language" in captured
+    
