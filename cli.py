@@ -1,6 +1,10 @@
 from themes import Theme
 from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
 
+class StandardRenderer:
+    def print(slef, text, style=None):
+        print(text)
+
 def main(choice=None, theme_number=None):
     if choice is None:
         choice = input(get_prompt())
