@@ -31,6 +31,13 @@ def test_main_option_3_generates_html():
     output_file = "bootcamp.html"
     assert Path(output_file).exists()
 
+def test_main_prints_duties_via_renderer(capsys):
+    renderer = StandardRenderer()
+    main(choice="1", renderer=renderer)
+    captured = capsys.readouterr()
+    assert "Script and code in at least one general purpose language" in captured.out
+    assert "Initiate and facilitate knowledge sharing" in captured.out
+
 
 
 
