@@ -1,5 +1,5 @@
 from themes import Theme
-from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes
+from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes, render_all_duties
 from standard_cli import StandardRenderer
 
 def main(choice=None, theme_number=None, renderer=None):
@@ -10,7 +10,7 @@ def main(choice=None, theme_number=None, renderer=None):
         choice = input(get_prompt())
     
     if str(choice) == "1":
-        renderer.print(Theme.list_duties())
+        render_all_duties(renderer)
     
     elif str(choice) == "2":
         output_file = "duties.html"
