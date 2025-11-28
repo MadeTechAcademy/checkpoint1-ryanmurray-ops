@@ -124,3 +124,8 @@ def test_main_choice_accepts_option_0(capsys):
     
     assert choice == 0
 
+def test_get_prompt_includes_option_0():
+    prompt = get_prompt()
+    assert "Press (0) to" in prompt
+
+
