@@ -129,6 +129,7 @@ def test_get_prompt_includes_option_0():
     assert "Press (0) to" in prompt
 
 def test_main_choice_accepts_option_0(capsys):
+    renderer = StandardRenderer()
     with patch("builtins.input", side_effect=["0"]):
         choice = get_main_choice(renderer)
     assert choice == 0

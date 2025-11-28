@@ -48,7 +48,7 @@ def get_main_choice(renderer):
             if choice in valid_choices:
                 return choice
             else:
-                renderer.print("Invalid choice, please select 1, 2, 3 or 4", style="bold red")
+                renderer.print("Invalid choice, please select 0, 1, 2, 3 or 4", style="bold red")
         except ValueError:
             renderer.print("Please enter a valid number", style="bold red")
 
