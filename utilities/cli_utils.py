@@ -25,7 +25,7 @@ def get_prompt(renderer=None):
             "Press (1) to list all the duties\n"
             "Press (2) to generate an HTML file of duties\n"
             "Press (3) to view duties by theme\n"
-            "Enter your choice: "
+            "Please choose an option: "
         )
 
 
@@ -36,7 +36,7 @@ def get_prompt(renderer=None):
 # Render all apprenticeship duties as a table or plain text
 def render_all_duties(renderer):
     if isinstance(renderer, RichRenderer):
-        table = Table(title="All Apprenticeship Duties", title_style="bold magenta", border_style="bright_blue" show_lines=True)
+        table = Table(title="All Apprenticeship Duties", title_style="bold magenta", border_style="bright_blue", show_lines=True)
         table.add_column("Duty #", style="bold cyan", justify="center", no_wrap=True)
         table.add_column("Description", style="cyan", justify="left")
         for duty_number, duty_text in enumerate(Theme.all_duties, start=1):
@@ -64,7 +64,7 @@ def render_duties_html(renderer, output_file="duties.html"):
 # Render a table of all available themes
 def print_available_themes(renderer):
     if isinstance(renderer, RichRenderer):
-        table = Table(title="Available Themes", title_style="bold magenta", border_style="bright_blue" show_lines=True,)
+        table = Table(title="Available Themes", title_style="bold magenta", border_style="bright_blue", show_lines=True,)
         table.add_column("Number", style="bold cyan", justify="center")
         table.add_column("Theme Name", style="cyan", justify="left")
         for number,theme in Theme.all_themes.items():
@@ -89,7 +89,7 @@ def render_specific_theme_duties(renderer, theme_number):
         renderer.print(f"Theme '{theme_name}' saved to {output_file}", style="bold green")
 
         # Create a table with a title and lines between rows
-        table = Table(title=f"Duties in '{theme_name}'", title_style="bold magenta", border_style="bright_blue" show_lines=True)
+        table = Table(title=f"Duties in '{theme_name}'", title_style="bold magenta", border_style="bright_blue", show_lines=True)
         table.add_column("Duty #", style="bold cyan", justify="center", no_wrap=True)
         table.add_column("Description", style="cyan", justify="left")
         for duty_number, duty_description in enumerate(theme.duties, start=1):

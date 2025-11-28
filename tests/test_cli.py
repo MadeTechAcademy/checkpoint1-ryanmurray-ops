@@ -1,6 +1,7 @@
 from pathlib import Path
 from cli import get_prompt, main
 from standard_cli import StandardRenderer
+from unittest.mock import patch
 
 def test_prompt_text():
     prompt = get_prompt()
@@ -57,6 +58,11 @@ def test_main_invalid_option_choice(capsys):
     captured = capsys.readouterr()
     assert "Invalid choice, please select 1, 2 or 3" in captured.out
 
+def test_get_theme_choice_reterns_integer():
+    renderer = StandardRenderer()
+    with patch("builtins.input", return_value="1"):
+        choice = get_theme_choice(renderer)
+    assert choice == 1
 
 
 
