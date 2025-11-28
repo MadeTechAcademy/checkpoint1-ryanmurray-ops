@@ -7,6 +7,7 @@ from rich.console import Console
 # ----------------------------
 # CLI Main Menu
 # ----------------------------
+# Display the main menu and prompt the user for a choice
 def get_prompt(renderer=None):
      if isinstance(renderer, RichRenderer):
         table = Table(title="Welcome to Apprentice Themes",  title_style="bold magenta", border_style="bright_blue")
@@ -33,6 +34,7 @@ def get_prompt(renderer=None):
 # ----------------------------
 # CLI Option 1: List All Duties
 # ----------------------------
+# Render all apprenticeship duties as a table or plain text
 def render_all_duties(renderer):
     if isinstance(renderer, RichRenderer):
         table = Table(title="All Apprenticeship Duties", title_style="bold magenta", show_lines=True)
@@ -50,6 +52,7 @@ def render_all_duties(renderer):
 # ----------------------------
 # CLI Option 2: Generate HTML for All Duties
 # ----------------------------
+#Generate a HTML file containing all duties
 def render_duties_html(renderer, output_file="duties.html"):
     generate_html(Theme.all_duties, output_file)
     renderer.print(f"Duties saved to {output_file}")        
@@ -59,6 +62,7 @@ def render_duties_html(renderer, output_file="duties.html"):
 # ----------------------------
 # CLI Option 3a: List Available Themes
 # ----------------------------
+# Render a table of all available themes
 def print_available_themes(renderer):
     if isinstance(renderer, RichRenderer):
         table = Table(title="Available Themes", title_style="bold magenta", show_lines=True,)
@@ -77,6 +81,7 @@ def print_available_themes(renderer):
 # ----------------------------
 # CLI Option 3b: Render Duties for a Specific Theme
 # ----------------------------
+# Render duties for a specific theme and generate HTML file
 def render_specific_theme_duties(renderer, theme_number):
     theme = Theme.all_themes[theme_number]
     output_file, theme_name = generate_theme_file(theme_number)
@@ -102,13 +107,14 @@ def render_specific_theme_duties(renderer, theme_number):
 # ----------------------------
 # Utilities: HTML Generation (used by Options 2 and 3)
 # ----------------------------
+# Save a list of duties to a HTML file
 def generate_html(duties, output_file):
-    # Generate a HTML file with the given duties
     save_duties_to_html(duties, output_file)
     return output_file
 
 
 
+# Generate a HTMl file for a specific theme and return its file name
 def generate_theme_file(theme_number):
     theme = Theme.all_themes[theme_number]
     output_file = f"{theme.name.lower().replace(' ', '_')}.html"
