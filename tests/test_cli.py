@@ -59,7 +59,7 @@ def test_main_invalid_option_choice(capsys):
     captured = capsys.readouterr()
     assert "Invalid choice, please select 1, 2 or 3" in captured.out
 
-def test_get_theme_choice_reterns_integer():
+def test_get_theme_choice_returns_integer():
     renderer = StandardRenderer()
     with patch("builtins.input", return_value="1"):
         choice = get_theme_choice(renderer)
@@ -98,8 +98,10 @@ def test_launcher_standard_renderer_prints_main_menu(capsys):
     assert "Press (2) to generate an HTML file of duties" in captured.out
     assert "Press (3) to view duties by theme" in captured.out
     
-
-
-
-
+def test_main_menu_exit_option(capsys):
+    with patch("builtins.input", side_effect=["4"]):
+        main(renderer=StandardRenderer())
+        
+    captured = capsys.readouterr().out
+    assert "Exiting Program... Goodbye!" in captured
 
