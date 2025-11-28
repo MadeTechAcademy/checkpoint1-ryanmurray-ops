@@ -3,11 +3,13 @@ from utilities.html_utils import save_duties_to_html
 from rich_cli import RichRenderer
 from rich.table import Table
 from rich.console import Console
-from rich.text import Text
 
+# ----------------------------
+# CLI Main Menu
+# ----------------------------
 def get_prompt(renderer=None):
      if isinstance(renderer, RichRenderer):
-        table = Table(title="[bold magenta]Welcome to Apprentice Themes[/bold magenta]")
+        table = Table(title="Welcome to Apprentice Themes",  title_style="bold magenta", border_style="bright_blue")
         table.add_column("Option", style="bold cyan", justify="center")
         table.add_column("Action", style="cyan")
         table.add_row("1", "List all the duties")
@@ -15,7 +17,7 @@ def get_prompt(renderer=None):
         table.add_row("3", "View duties by theme")
 
         renderer.print(table)
-        renderer.print(Text("Please choose an option: ", style="bold green"))
+        renderer.print("Please choose an option: ", style="bold green")
         return ""
      else:
         return (
@@ -26,68 +28,89 @@ def get_prompt(renderer=None):
             "Enter your choice: "
         )
 
-def print_available_themes(renderer):
-    renderer.print("Available Themes:\n")
-    for number,theme in Theme.all_themes.items():
-        print(f"{number}. {theme.name}")
 
-def generate_html(duties, output_file):
-    # Generate a HTML file with the given duties
-    save_duties_to_html(duties, output_file)
-    return output_file
 
-def generate_theme_file(theme_number):
-    theme = Theme.all_themes[theme_number]
-    output_file = f"{theme.name.lower().replace(' ', '_')}.html"
-    generate_html(theme.duties, output_file)
-    return output_file, theme.name 
-
+# ----------------------------
+# CLI Option 1: List All Duties
+# ----------------------------
 def render_all_duties(renderer):
-    # Display all apprenticeship duties using the given renderer.
-    # RichRenderer: styled output
-    # StandardRenderer: plain text
     if isinstance(renderer, RichRenderer):
-
-        console = Console()
-
-        # Create a table with a title and lines between rows
-        table = Table(title="All Apprenticeship Duties", show_lines=True)
+        table = Table(title="All Apprenticeship Duties", title_style="bold magenta", show_lines=True)
         table.add_column("Duty #", style="bold cyan", no_wrap=True)
         table.add_column("Description", style="cyan")
-
         for duty_number, duty_text in enumerate(Theme.all_duties, start=1):
             table.add_row(f"{duty_number}", duty_text)
-
-        console.print(table)
-
+        renderer.print(table)
     else:
         # Plain text for StandardRenderer
         renderer.print(Theme.list_duties())
 
+
+
+# ----------------------------
+# CLI Option 2: Generate HTML for All Duties
+# ----------------------------
 def render_duties_html(renderer, output_file="duties.html"):
     generate_html(Theme.all_duties, output_file)
-    renderer.print(f"Duties saved to {output_file}")
+    renderer.print(f"Duties saved to {output_file}")        
 
+
+
+# ----------------------------
+# CLI Option 3a: List Available Themes
+# ----------------------------
+def print_available_themes(renderer):
+    if isinstance(renderer, RichRenderer):
+        table = Table(title="Available Themes", title_style="bold magenta", show_lines=True,)
+        table.add_column("Number", style="bold cyan", justify="center")
+        table.add_column("Theme Name", style="cyan")
+        for number,theme in Theme.all_themes.items():
+            table.add_row(f"{number}", theme.name)
+        renderer.print(table)
+    else:
+        renderer.print("Available Themes:\n")
+        for number, theme in Theme.all_themes.items():
+            renderer.print(f"{number}. {theme.name}")
+
+
+
+# ----------------------------
+# CLI Option 3b: Render Duties for a Specific Theme
+# ----------------------------
 def render_specific_theme_duties(renderer, theme_number):
     theme = Theme.all_themes[theme_number]
     output_file, theme_name = generate_theme_file(theme_number)
 
     if isinstance(renderer, RichRenderer):
-        console = Console()
-        renderer.print(f"Theme '{theme_name}' saved to {output_file}, style=bold green")
+        renderer.print(f"Theme '{theme_name}' saved to {output_file}", style="bold green")
 
         # Create a table with a title and lines between rows
-        table = Table(title="Duties in '{theme_name}'", show_lines=True)
+        table = Table(title=f"Duties in '{theme_name}'", title_style="bold magenta", show_lines=True)
         table.add_column("Duty #", style="bold cyan", no_wrap=True)
         table.add_column("Description", style="cyan")
-
         for duty_number, duty_description in enumerate(theme.duties, start=1):
             table.add_row(f"{duty_number}", duty_description)
-
-        console.print(table)
+        renderer.print(table)
     else:
         renderer.print(f"Theme '{theme_name}' saved to {output_file}")
         renderer.print(f"Duties in '{theme_name}':")
         for duty_description in theme.duties:
             renderer.print(f"- {duty_description}")
 
+
+
+# ----------------------------
+# Utilities: HTML Generation (used by Options 2 and 3)
+# ----------------------------
+def generate_html(duties, output_file):
+    # Generate a HTML file with the given duties
+    save_duties_to_html(duties, output_file)
+    return output_file
+
+
+
+def generate_theme_file(theme_number):
+    theme = Theme.all_themes[theme_number]
+    output_file = f"{theme.name.lower().replace(' ', '_')}.html"
+    generate_html(theme.duties, output_file)
+    return output_file, theme.name 
