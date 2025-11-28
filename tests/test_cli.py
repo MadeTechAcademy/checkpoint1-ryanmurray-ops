@@ -3,6 +3,7 @@ from cli import get_prompt, main
 from standard_cli import StandardRenderer
 from unittest.mock import patch
 from utilities.cli_utils import get_theme_choice, get_main_choice
+from launcher import launch_selected_terminal
 
 def test_prompt_text():
     prompt = get_prompt()
@@ -104,4 +105,13 @@ def test_main_menu_exit_option(capsys):
         
     captured = capsys.readouterr().out
     assert "Exiting Program... Goodbye!" in captured
+
+def test_go_back_to_launcher_from_main_menu_option(capsys):
+    with patch("builtins.input", side_effect=["0"]), \
+         patch("cli.return_to_launcher") as mock_launcher:
+        main(choice="0", renderer=StandardRenderer())
+
+    mock_launcher.assert_called_once()
+
+
 

@@ -4,6 +4,8 @@ from rich_cli import RichRenderer
 from standard_cli import StandardRenderer
 from rich.table import Table
 
+
+
 # ----------------------------
 # CLI Main Menu
 # ----------------------------
@@ -13,15 +15,18 @@ def get_prompt(renderer=None):
         table = Table(title="Welcome to Apprentice Themes",  title_style="bold magenta", border_style="bright_blue", show_lines=True)
         table.add_column("Option", style="bold cyan", justify="center")
         table.add_column("Action", style="cyan", justify="left")
+        table.add_row("0", "List all the duties")
         table.add_row("1", "List all the duties")
         table.add_row("2", "Generate an HTML file of duties")
         table.add_row("3", "View duties by theme")
+        table.add_row("4", "to Exit")
 
         renderer.print(table)
         return ""
      else:
         return (
             "Welcome to apprentice themes!\n\n"
+            "Press (0) to list all the duties\n"
             "Press (1) to list all the duties\n"
             "Press (2) to generate an HTML file of duties\n"
             "Press (3) to view duties by theme\n"
@@ -60,6 +65,14 @@ def display_menu_and_get_choice(renderer=None):
     choice = get_main_choice(renderer)
     return choice
 
+# ----------------------------
+# CLI Option 0: Return to Launcher
+# ----------------------------
+# Display the main menu and prompt the user for a choice
+def return_to_launcher():
+    print("Returning to Launcher...")
+    from launcher import launch_selected_terminal
+    launch_selected_terminal()
 
 
 # ----------------------------
