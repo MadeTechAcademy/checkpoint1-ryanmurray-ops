@@ -39,3 +39,20 @@ def test_launcher_exit_option(capsys):
 
         captured = capsys.readouterr().out
         assert "Exiting Program... Goodbye!" in captured
+
+def test_launcher_loops_until_valid_renderer(capsys):
+    from launcher import launch_selected_terminal
+    from unittest.mock import patch
+
+    # First input invalid "5", second input valid "2"
+    with patch("builtins.input", side_effect=["5", "2"]):
+        launch_selected_terminal(choice=None)
+    
+    captured = capsys.readouterr().out
+
+    # Assert invalid choice message appears
+    assert "Invalid choice" in captured
+
+    # Assert it prompts for input again
+    assert "Please Enter your preferred terminal" in captured
+
