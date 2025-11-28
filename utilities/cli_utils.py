@@ -90,9 +90,12 @@ def render_all_duties(renderer):
         renderer.print(table)
     else:
         # Plain text for StandardRenderer
-        renderer.print(Theme.list_duties())
-
-
+        for index, duty_description in enumerate(Theme.all_duties, start=1):
+            print("=" * 80)
+            print(f"=== Duty {index} ===")  # Use index as header
+            print(duty_description)        # Just the duty text itself
+            print("=" * 80)
+            print()  # blank line between duties
 
 # ----------------------------
 # CLI Option 2: Generate HTML for All Duties
