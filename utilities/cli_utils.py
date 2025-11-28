@@ -78,6 +78,23 @@ def print_available_themes(renderer):
 
 
 # ----------------------------
+# CLI Option 3a Helper: Prompt user for Theme Selection
+# ----------------------------
+# Continuously prompt the user until a valid theme number is entered
+def get_theme_choice(renderer):
+    while True:
+        try:
+            choice = int(input("Please choose an option: "))
+            if choice in Theme.all_themes:
+                return choice
+            else:
+                renderer.print("Invalid theme number, please try again", style="bold red")
+        except ValueError:
+            renderer.print("Please enter a valid number", style="bold red")
+
+
+
+# ----------------------------
 # CLI Option 3b: Render Duties for a Specific Theme
 # ----------------------------
 # Render duties for a specific theme and generate HTML file
@@ -119,3 +136,4 @@ def generate_theme_file(theme_number):
     output_file = f"{theme.name.lower().replace(' ', '_')}.html"
     generate_html(theme.duties, output_file)
     return output_file, theme.name 
+

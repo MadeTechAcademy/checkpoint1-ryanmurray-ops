@@ -2,6 +2,7 @@ from pathlib import Path
 from cli import get_prompt, main
 from standard_cli import StandardRenderer
 from unittest.mock import patch
+from utilities.cli_utils import get_theme_choice
 
 def test_prompt_text():
     prompt = get_prompt()

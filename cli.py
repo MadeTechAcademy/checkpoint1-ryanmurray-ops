@@ -1,5 +1,5 @@
 from themes import Theme
-from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes, render_all_duties, render_duties_html, render_specific_theme_duties
+from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes, render_all_duties, render_duties_html, render_specific_theme_duties, get_theme_choice
 from standard_cli import StandardRenderer
 
 def main(choice=None, theme_number=None, renderer=None):
@@ -19,7 +19,7 @@ def main(choice=None, theme_number=None, renderer=None):
         print_available_themes(renderer)
 
         if theme_number is None:
-            theme_number = int(input("Enter theme number: "))
+            theme_number = get_theme_choice(renderer)
         render_specific_theme_duties(renderer, theme_number)
 
     else:
