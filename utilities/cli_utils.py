@@ -24,7 +24,6 @@ def get_prompt(renderer=None):
             "Press (1) to list all the duties\n"
             "Press (2) to generate an HTML file of duties\n"
             "Press (3) to view duties by theme\n"
-            "Please choose an option: "
         )
 
 

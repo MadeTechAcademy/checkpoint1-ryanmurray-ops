@@ -7,7 +7,9 @@ def main(choice=None, theme_number=None, renderer=None):
         renderer = StandardRenderer()
 
     if choice is None:
-        get_prompt(renderer)
+        menu_text = get_prompt(renderer)
+        if isinstance(renderer, StandardRenderer):
+            print(menu_text)
         choice = get_main_choice(renderer)
     
     if str(choice) == "1":
