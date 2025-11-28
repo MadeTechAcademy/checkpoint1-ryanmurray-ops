@@ -1,6 +1,7 @@
 from themes import Theme
 from utilities.html_utils import save_duties_to_html
 from rich_cli import RichRenderer
+from standard_cli import StandardRenderer
 from rich.table import Table
 
 # ----------------------------
@@ -32,6 +33,7 @@ def get_prompt(renderer=None):
 # CLI Main Menu Helper: Get user choice
 # ----------------------------
 # Continuously prompt user until they enter a valid main menu option
+# Works with any renderer, only prints error messages via renderer
 def get_main_choice(renderer):
     while True:
         try:
@@ -42,6 +44,20 @@ def get_main_choice(renderer):
                 renderer.print("Invalid choice, please select 1, 2 or 3", style="bold red")
         except ValueError:
             renderer.print("Please enter a valid number", style="bold red")
+
+
+
+# ----------------------------
+# CLI Main Menu Helper: Display menu and get choice
+# ----------------------------
+# Display the main menu using get_prompt() and return a valid main menu choice
+# Uses get_prompt() and handles printing for StandardRenderer
+def display_menu_and_get_choice(renderer=None):
+    menu_text = get_prompt(renderer)
+    if isinstance(renderer, StandardRenderer):
+        print(menu_text)
+    choice = get_main_choice(renderer)
+    return choice
 
 
 

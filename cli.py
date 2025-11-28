@@ -1,5 +1,5 @@
 from themes import Theme
-from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes, render_all_duties, render_duties_html, render_specific_theme_duties, get_theme_choice, get_main_choice
+from utilities.cli_utils import generate_html, generate_theme_file, get_prompt, print_available_themes, render_all_duties, render_duties_html, render_specific_theme_duties, get_theme_choice, get_main_choice, display_menu_and_get_choice
 from standard_cli import StandardRenderer
 
 def main(choice=None, theme_number=None, renderer=None):
@@ -7,10 +7,7 @@ def main(choice=None, theme_number=None, renderer=None):
         renderer = StandardRenderer()
 
     if choice is None:
-        menu_text = get_prompt(renderer)
-        if isinstance(renderer, StandardRenderer):
-            print(menu_text)
-        choice = get_main_choice(renderer)
+        choice = display_menu_and_get_choice(renderer)
     
     if str(choice) == "1":
         render_all_duties(renderer)
