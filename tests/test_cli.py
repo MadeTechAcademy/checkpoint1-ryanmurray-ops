@@ -65,10 +65,13 @@ def test_get_theme_choice_reterns_integer():
         choice = get_theme_choice(renderer)
     assert choice == 1
 
-def test_get_theme_choice_invalid_then_valid():
+def test_get_theme_choice_invalid_then_valid(capsys):
     renderer = StandardRenderer()
     with patch("builtins.input", side_effect=["99", "2"]):
         choice = get_theme_choice(renderer)
+
+    captured = capsys.readouterr()
+    assert "Invalid theme number" in captured.out
     assert choice == 2
 
 def test_get_main_choice_returns_valid_integer():
@@ -76,6 +79,17 @@ def test_get_main_choice_returns_valid_integer():
     with patch("builtins.input", return_value="2"):
         choice = get_main_choice(renderer)
     assert choice == 2
+
+def test_get_main_choice_invalid_then_valid(capsys):
+    renderer = StandardRenderer()
+    with patch("builtins.input", side_effect=["99", "2"]):
+        choice = get_main_choice(renderer)
+
+    captured = capsys.readouterr()
+    assert "Invalid choice" in captured.out
+    assert choice == 2
+
+
 
 
 

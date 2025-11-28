@@ -17,7 +17,6 @@ def get_prompt(renderer=None):
         table.add_row("3", "View duties by theme")
 
         renderer.print(table)
-        renderer.print("Please choose an option: ", style="bold green")
         return ""
      else:
         return (
@@ -27,6 +26,23 @@ def get_prompt(renderer=None):
             "Press (3) to view duties by theme\n"
             "Please choose an option: "
         )
+
+
+
+# ----------------------------
+# CLI Main Menu Helper: Get user choice
+# ----------------------------
+# Continuously prompt user until they enter a valid main menu option
+def get_main_choice(renderer):
+    while True:
+        try:
+            choice = int(input(("Please choose an option: ")))
+            if choice in [1, 2, 3]:
+                return choice
+            else:
+                renderer.print("Invalid choice, please select 1, 2 or 3", style="bold red")
+        except ValueError:
+            renderer.print("Please enter a valid number", style="bold red")
 
 
 
@@ -137,8 +153,7 @@ def generate_theme_file(theme_number):
     generate_html(theme.duties, output_file)
     return output_file, theme.name 
 
-def get_main_choice(renderer):
-    choice = int(input("Please choose an option: "))
-    return choice
+
+
 
 
