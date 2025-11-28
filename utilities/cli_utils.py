@@ -41,10 +41,11 @@ def get_prompt(renderer=None):
 # Continuously prompt user until they enter a valid main menu option
 # Works with any renderer, only prints error messages via renderer
 def get_main_choice(renderer):
+    valid_choices = [0, 1, 2, 3, 4]
     while True:
         try:
             choice = int(input(("Please choose an option: ")))
-            if choice in [1, 2, 3, 4]:
+            if choice in valid_choices:
                 return choice
             else:
                 renderer.print("Invalid choice, please select 1, 2, 3 or 4", style="bold red")
