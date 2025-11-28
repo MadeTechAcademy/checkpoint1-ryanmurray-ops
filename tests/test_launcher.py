@@ -33,3 +33,9 @@ def test_launch_selected_terminal_with_user_input_rich(capsys):
     captured = capsys.readouterr().out
     assert "Script and code in at least one general purpose language" in captured
     
+def test_launcher_exit_option(capsys):
+    with patch("builtins.input", return_value="3"):
+        launch_selected_terminal(choice=None, renderer_choice=None)
+
+        captured = capsys.readouterr().out
+        assert "Exiting Program... Goodbye!" in captured

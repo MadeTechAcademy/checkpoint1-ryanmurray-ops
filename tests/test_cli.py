@@ -97,10 +97,7 @@ def test_launcher_standard_renderer_prints_main_menu(capsys):
     assert "Press (1) to list all the duties" in captured.out
     assert "Press (2) to generate an HTML file of duties" in captured.out
     assert "Press (3) to view duties by theme" in captured.out
-
-        
-
-
+    
 
 
 
