@@ -114,4 +114,13 @@ def test_go_back_to_launcher_from_main_menu_option(capsys):
     mock_launcher.assert_called_once()
 
 
+def test_main_choice_accepts_option_0(capsys):
+    renderer = StandardRenderer()
+    with patch("builtins.input", side_effect=["0"]):
+        try:
+            choice = get_main_choice(renderer)
+        except Exception:
+            choice = None
+    
+    assert choice == 0
 
