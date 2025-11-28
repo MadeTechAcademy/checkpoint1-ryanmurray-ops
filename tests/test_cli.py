@@ -71,6 +71,12 @@ def test_get_theme_choice_invalid_then_valid():
         choice = get_theme_choice(renderer)
     assert choice == 2
 
+def test_get_main_choice_returns_valid_integer():
+    renderer = StandardRenderer()
+    with patch("builtins.input", return_value="2"):
+        choice = get_theme_choice(renderer)
+    assert choice == 2
+
 
 
 
