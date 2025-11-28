@@ -134,4 +134,13 @@ def test_main_choice_accepts_option_0(capsys):
         choice = get_main_choice(renderer)
     assert choice == 0
 
+def test_press_enter_to_return_after_view_all_duties(capsys):
+    renderer = StandardRenderer()
+    with patch("builtins.input", side_effect=["\n"]):
+        from utilities.cli_utils import render_all_duties
+        render_all_duties(renderer)
+
+    captured = capsys.readouterr().out
+    assert "Press Enter to return to the main menu" in captured
+
 
