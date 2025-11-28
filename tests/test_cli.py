@@ -2,7 +2,7 @@ from pathlib import Path
 from cli import get_prompt, main
 from standard_cli import StandardRenderer
 from unittest.mock import patch
-from utilities.cli_utils import get_theme_choice
+from utilities.cli_utils import get_theme_choice, get_main_choice
 
 def test_prompt_text():
     prompt = get_prompt()
@@ -74,7 +74,7 @@ def test_get_theme_choice_invalid_then_valid():
 def test_get_main_choice_returns_valid_integer():
     renderer = StandardRenderer()
     with patch("builtins.input", return_value="2"):
-        choice = get_theme_choice(renderer)
+        choice = get_main_choice(renderer)
     assert choice == 2
 
 

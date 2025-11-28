@@ -137,3 +137,8 @@ def generate_theme_file(theme_number):
     generate_html(theme.duties, output_file)
     return output_file, theme.name 
 
+def get_main_choice(renderer):
+    choice = int(input("Please choose an option: "))
+    return choice
+
+
