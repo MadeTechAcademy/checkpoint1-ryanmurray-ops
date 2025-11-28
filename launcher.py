@@ -26,6 +26,7 @@ def launch_selected_terminal(choice=None, renderer_choice=None):
         # Handle Exit immediately
         if renderer_choice == "3":
             print("Exiting Program... Goodbye!")
+            return
 
     renderer = select_renderer(renderer_choice)
 
