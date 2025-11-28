@@ -57,7 +57,7 @@ def test_main_option_3_uses_renderer(capsys):
 def test_main_invalid_option_choice(capsys):
     main(choice="99")
     captured = capsys.readouterr()
-    assert "Invalid choice, please select 1, 2 or 3" in captured.out
+    assert "Invalid choice, please select 1, 2, 3 or 4" in captured.out
 
 def test_get_theme_choice_returns_integer():
     renderer = StandardRenderer()

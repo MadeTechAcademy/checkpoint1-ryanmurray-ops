@@ -25,6 +25,7 @@ def get_prompt(renderer=None):
             "Press (1) to list all the duties\n"
             "Press (2) to generate an HTML file of duties\n"
             "Press (3) to view duties by theme\n"
+            "Press (4) to Exit"
         )
 
 
@@ -38,10 +39,10 @@ def get_main_choice(renderer):
     while True:
         try:
             choice = int(input(("Please choose an option: ")))
-            if choice in [1, 2, 3]:
+            if choice in [1, 2, 3, 4]:
                 return choice
             else:
-                renderer.print("Invalid choice, please select 1, 2 or 3", style="bold red")
+                renderer.print("Invalid choice, please select 1, 2, 3 or 4", style="bold red")
         except ValueError:
             renderer.print("Please enter a valid number", style="bold red")
 

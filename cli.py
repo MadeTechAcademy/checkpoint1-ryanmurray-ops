@@ -21,9 +21,16 @@ def main(choice=None, theme_number=None, renderer=None):
         if theme_number is None:
             theme_number = get_theme_choice(renderer)
         render_specific_theme_duties(renderer, theme_number)
+    
+    elif str(choice) == "4":
+        print("Exiting Program... Goodbye!")
+        return
 
     else:
-        renderer.print("Invalid choice, please select 1, 2 or 3")
+        renderer.print("Invalid choice, please select 1, 2, 3 or 4")
+    
+    # reset choice so next loop asks for input
+    choice = None
 
 if __name__=="__main__":
     main()
